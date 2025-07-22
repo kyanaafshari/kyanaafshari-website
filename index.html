@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kyana Afshari | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <!-- Audio Element (hidden) -->
+  <audio id="backgroundMusic" loop>
+    <source src="ncs-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Audio Control Button -->
+  <button class="audio-control" id="audioToggle" title="Toggle Music">
+    🔇
+  </button>
+
+  <!-- Play Me Button -->
+  <button class="play-me-button" id="playMeButton">
+    <span>Play Me</span>
+    <span class="arrow">↗</span>
+  </button>
+
+  <div class="content">
+    <h1 id="name" class="typewriter"></h1>
+    <p id="caption" class="typewriter"></p>
+
+    <div class="about-box">
+      <h2>About Me</h2>
+      <p>
+        I combine STEM and the spotlight—competing in robotics and pageants while hosting TV shows!
+      </p>
+    </div>
+  </div>
+
+  <!-- Music Credit -->
+  <div class="music-credit">
+    🎵 Music: <a href="http://youtube.com/watch?v=iqoNoU-rm14" target="_blank" rel="noopener">NCS - No Copyright Sounds</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
