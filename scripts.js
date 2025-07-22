@@ -40,9 +40,9 @@ function toggleMusic() {
 window.onload = () => {
   // Initialize audio controls, autoplay sound
   audio = document.getElementById('backgroundMusic');
+  audio.volume = 0.3; // 30% volume
   audioToggle = document.getElementById('audioToggle');
   audioToggle.addEventListener('click', toggleMusic);
-  audio.volume = 0.3; // 30% volume
 
   const playMeButton = document.getElementById('playMeButton');
   playMeButton.addEventListener('click', toggleMusic);
