@@ -20,7 +20,7 @@ function typeWriter(text, elementId, delay = 100) {
   type();
 }
 
-  // Audio control functionality
+// Audio control functionality
 let isPlaying = false;
 let audio, audioToggle;
 
@@ -46,8 +46,33 @@ function toggleMusic() {
   }
 }
 
+// Timeline interactivity
+function initializeTimeline() {
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  
+  timelineItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      // Remove active class from all items
+      timelineItems.forEach(i => i.classList.remove('active'));
+      // Add active class to clicked item
+      item.classList.add('active');
+      
+      // Optional: Auto-remove active class after 3 seconds
+      setTimeout(() => {
+        item.classList.remove('active');
+      }, 3000);
+    });
+
+    // Add staggered entrance animation
+    setTimeout(() => {
+      item.style.opacity = '1';
+      item.style.transform = 'translateY(-50%) scale(1)';
+    }, index * 200);
+  });
+}
+
 window.onload = () => {
-  // Initialize audio controls, autoplay sound
+  // Initialize audio controls
   audio = document.getElementById('backgroundMusic');
   audio.volume = 0.3; // 30% volume
   audioToggle = document.getElementById('audioToggle');
@@ -62,7 +87,10 @@ window.onload = () => {
     typeWriter("Cybersecurity Analyst ✨ AI Enthusiast ✨ Leader", "caption", 50);
   }, 1500);
 
-  // Initialize robots floating in background
+  // Initialize timeline
+  initializeTimeline();
+
+  // Initialize particles
   particlesJS("particles-js", {
     particles: {
       number: {
@@ -75,7 +103,7 @@ window.onload = () => {
       shape: {
         type: "image",
         image: {
-          src: "robot-particle.png", // This is your custom robot image
+          src: "robot-particle.png",
           width: 40,
           height: 40
         }
@@ -111,4 +139,3 @@ window.onload = () => {
     retina_detect: true
   });
 };
-  

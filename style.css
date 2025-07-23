@@ -1,77 +1,101 @@
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
-    background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 50%, #c2e9fb 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    color: #fff;
-  }
-  
-  @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  #particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 0;
-  }
-  
-  .content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 2rem;
-    top: 20%;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 0.3em;
-  }
-  
-  p {
-    font-size: 1.3rem;
-    margin-top: 0;
-  }
-  
-  .typewriter::after {
-    content: '|';
-    animation: blink 0.7s infinite;
-  }
-  
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-  
-  .about-box {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    backdrop-filter: blur(20px);
-    padding: 2rem;
-    margin-top: 2rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    color: white;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  }
-  
-  .about-box h2 {
-    margin-top: 0;
-    margin-bottom: 0.5em;
-  }
-  /* Audio Control Styles */
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 50%, #c2e9fb 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: #fff;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+  top: 10%;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+p {
+  font-size: 1.3rem;
+  margin-top: 0;
+}
+
+.typewriter::after {
+  content: '|';
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.about-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  margin: 0;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.about-box h2 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.timeline-section {
+  margin-top: 1rem; /* Adjust spacing between content above and timeline */
+}
+
+.timeline-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  padding: 1rem 1.5rem;
+  max-width: 200px;
+  margin: 0 auto; /* no vertical margin */
+  color: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.2rem;
+  user-select: none;
+}
+
+/* Timeline container reduced margin and padding */
+.timeline-container {
+  margin: 0 auto;
+  padding: 0.5rem 1rem 1rem 1rem;
+  max-width: 95vw;
+  overflow: hidden;
+}
+ /* Audio Control Styles */
 .audio-control {
   position: fixed;
   top: 20px;
@@ -187,3 +211,169 @@ body {
   color: white;
 }
   
+
+/* Timeline Styles */
+.timeline-container {
+  position: relative;
+  margin: 3rem auto;
+  padding: 4rem 1rem 2rem 1rem;
+  max-width: 95vw;
+  overflow: hidden;
+}
+
+.timeline-wrapper {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  margin: 0 auto;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  height: 6px;
+  background: linear-gradient(90deg, 
+    #ff6b6b 0%, 
+    #4ecdc4 15%, 
+    #45b7d1 30%, 
+    #96ceb4 45%, 
+    #ffeaa7 60%, 
+    #dda0dd 75%, 
+    #98d8c8 90%, 
+    #f7dc6f 100%
+  );
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50%);
+  animation: timelineGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes timelineGlow {
+  0% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+  100% { box-shadow: 0 4px 30px rgba(255, 255, 255, 0.4); }
+}
+
+.timeline-item {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.timeline-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.timeline-card {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
+  padding: 1rem;
+  width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-card.above {
+  bottom: auto;
+  top: 50px;
+}
+
+.timeline-item:hover .timeline-card,
+.timeline-item.active .timeline-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+.timeline-item:hover .timeline-dot,
+.timeline-item.active .timeline-dot {
+  transform: scale(1.3);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.timeline-card h3 {
+  margin: 0 0 0.3rem 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.timeline-card p {
+  margin: 0.3rem 0;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.timeline-card .year {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-card .activities {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+  margin-top: 0.3rem;
+  line-height: 1.2;
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+  .timeline-container {
+    padding: 3rem 0.5rem 1rem 0.5rem;
+  }
+  
+  .timeline-wrapper {
+    height: 320px;
+  }
+  
+  .timeline-card {
+    width: 180px;
+    padding: 0.8rem;
+  }
+  
+  .timeline-card h3 {
+    font-size: 0.85rem;
+  }
+  
+  .timeline-card p {
+    font-size: 0.75rem;
+  }
+  
+  .timeline-card .year {
+    font-size: 0.7rem;
+  }
+  
+  .timeline-card .activities {
+    font-size: 0.65rem;
+  }
+}
