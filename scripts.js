@@ -1,3 +1,12 @@
+// --- HOW TO PUSH UPDATES TO GIT ---
+// 1) git add .
+// 2) git status
+// 3) git commit -m "commit title here, describe changes"
+// 4) git push origin main
+//
+// --- HOW TO PULL CHANGES FROM GIT ---
+// 1) git pull origin main
+
 function typeWriter(text, elementId, delay = 100) {
   let i = 0;
   const element = document.getElementById(elementId);
@@ -50,7 +59,7 @@ window.onload = () => {
   // Initialize text writing for title
   typeWriter("Kyana Afshari", "name", 100);
   setTimeout(() => {
-    typeWriter("Engineer ✨ Pageant Queen ✨ TV Personality", "caption", 50);
+    typeWriter("Cybersecurity Analyst ✨ AI Enthusiast ✨ Leader", "caption", 50);
   }, 1500);
 
   // Initialize robots floating in background
