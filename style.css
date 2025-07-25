@@ -1,14 +1,15 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow: hidden;
-  background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 50%, #c2e9fb 100%);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-  color: #fff;
-}
+  min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden; /* Only hide horizontal scroll */
+      overflow-y: auto; /* Allow vertical scrolling */
+      background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 50%, #c2e9fb 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: #fff;
+    }
 
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
@@ -30,7 +31,7 @@ body {
   z-index: 1;
   text-align: center;
   padding: 2rem;
-  top: 10%;
+  margin-top: 10vh;
 }
 
 h1 {
@@ -353,3 +354,169 @@ p {
       margin-top: 0.3rem;
       line-height: 1.2;
     }
+
+    /* Desert WAVE Robotics Section */
+.robotics-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  margin: 2rem auto;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  max-width: 800px;
+}
+
+.robotics-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.robotics-title h2 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.8rem;
+}
+
+.robotics-subtitle {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.achievement-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.robotics-content {
+  text-align: left;
+}
+
+.robotics-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.technical-contributions {
+  margin: 1.5rem 0;
+}
+
+.contrib-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.contrib-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.auv-showcase {
+  margin: 2rem 0;
+}
+
+.auv-showcase h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.auv-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.auv-link {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.auv-link:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.auv-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.auv-achievement {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.team-philosophy {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.team-philosophy blockquote {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 4px solid rgba(255, 255, 255, 0.5);
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.instagram-link a {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.instagram-link a:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Mobile responsive for robotics section */
+@media (max-width: 768px) {
+  .robotics-header {
+    text-align: center;
+  }
+  
+  .auv-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .auv-link {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
