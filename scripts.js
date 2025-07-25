@@ -71,7 +71,30 @@ function initializeTimeline() {
   });
 }
 
+// Back to Top Button Functionality
+function initializeBackToTop() {
+  const backToTopButton = document.getElementById('backToTop');
+  
+  // Show/hide button based on scroll position
+  window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('visible');
+    } else {
+      backToTopButton.classList.remove('visible');
+    }
+  });
+
+  // Smooth scroll to top when clicked
+  backToTopButton.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
 window.onload = () => {
+  
   // Initialize audio controls
   audio = document.getElementById('backgroundMusic');
   audio.volume = 0.3; // 30% volume
@@ -88,7 +111,10 @@ window.onload = () => {
   }, 1500);
 
   // Initialize timeline
-  initializeTimeline();
+  initializeTimeline(); 
+
+  //Initizilize back to top button
+  initializeBackToTop();
 
   // Initialize particles
   particlesJS("particles-js", {
