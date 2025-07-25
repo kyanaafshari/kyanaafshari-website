@@ -503,6 +503,278 @@ p {
   transform: translateY(-1px);
 }
 
+/* Student Government Section */
+.student-government-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  margin: 2rem auto;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  max-width: 800px;
+}
+
+/* Peer Education Section */
+.peer-education-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  margin: 2rem auto;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  max-width: 800px;
+}
+
+/* Awards Section */
+.awards-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  margin: 2rem auto;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  max-width: 800px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-title h2 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.8rem;
+}
+
+.section-subtitle {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.section-content {
+  text-align: left;
+}
+
+.section-content > p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Remove old subsection styles */
+
+/* Position Progression */
+.position-progression {
+  margin: 1.2rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.position-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.position-timeline {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: center;
+}
+
+.position-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.position-details strong {
+  font-size: 0.95rem;
+  color: white;
+}
+
+.position-details span {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.3;
+}
+
+/* Key Contributions */
+.key-contributions {
+  margin: 1.5rem 0;
+}
+
+.key-contributions .contrib-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.key-contributions .contrib-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* Peer Education Content */
+.section-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.mentorship-activities {
+  margin: 1.2rem 0;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.activity-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.activity-details strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: white;
+}
+
+.activity-details p {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.philosophy-highlight {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.philosophy-highlight blockquote {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 4px solid rgba(255, 255, 255, 0.5);
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+/* Awards Recognition */
+.awards-section h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+  text-align: center;
+  color: white;
+}
+
+.award-items {
+  margin-bottom: 1.5rem;
+}
+
+.award-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.award-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.award-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.award-details strong {
+  font-size: 0.95rem;
+  color: white;
+}
+
+.award-details span {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.leadership-philosophy {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.leadership-philosophy p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Mobile responsive for sections */
+@media (max-width: 768px) {
+  .student-government-section,
+  .peer-education-section,
+  .awards-section {
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+  }
+  
+  .position-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .position-timeline {
+    align-self: flex-start;
+    min-width: auto;
+  }
+  
+  .activity-item {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+  
+  .award-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+  }
+}
+
 /* Mobile responsive for robotics section */
 @media (max-width: 768px) {
   .robotics-header {
@@ -519,4 +791,5 @@ p {
     max-width: 250px;
   }
 }
+
 
