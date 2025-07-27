@@ -65,6 +65,8 @@ p {
   margin: 0;
   color: #333;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  max-width: 800px; /* ADD THIS LINE */
+  margin: 2rem auto; /* CHANGE this line from "margin: 0;" to center it */
 }
 
 .about-box h2 {
@@ -78,25 +80,24 @@ p {
 }
 
 .timeline-box {
-       background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      backdrop-filter: blur(20px);
-      padding: 1.5rem;
-      margin: 2rem auto 1rem auto;
-      color: #333;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-      max-width: 400px;
-      font-weight: 600;
-      text-align: center;
-      font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  padding: 1.5rem;
+  margin: 2rem auto 1rem auto;
+  color: #333;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  max-width: 800px; /* CHANGE from "max-width: 400px;" to "max-width: 800px;" */
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.1rem;
 }
 
-
-    .timeline-box h2 {
-      margin-top: 0;
-      margin-bottom: 0.5em;
-      font-size: 1.5rem;
-    }
+ .timeline-box h2 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.5rem;
+}
 
 
 /* Timeline container reduced margin and padding */
@@ -105,6 +106,7 @@ p {
   padding: 0.5rem 1rem 1rem 1rem;
   max-width: 95vw;
   overflow: hidden;
+  margin-bottom: 1rem;
 }
  /* Audio Control Styles */
 .audio-control {
@@ -123,7 +125,7 @@ p {
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  color: white;
+  color: #333;
   transition: all 0.3s ease;
 }
 
@@ -273,8 +275,8 @@ p {
 /* Timeline Styles */
     .timeline-container {
       position: relative;
-      margin: 1rem auto 3rem auto;
-      padding: 2rem 1rem 2rem 1rem;
+      margin: auto auto auto auto;
+      padding: 1rem 1rem 1rem 1rem;
       max-width: 95vw;
       overflow: hidden;
     }
@@ -283,7 +285,7 @@ p {
       position: relative;
       width: 100%;
       height: 350px;
-      margin: 0 auto;
+      margin: auto auto;
     }
 
 
@@ -411,7 +413,7 @@ p {
   border-radius: 20px;
   backdrop-filter: blur(20px);
   padding: 2rem;
-  margin: 2rem auto;
+  margin: auto auto;
   color: #333;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   max-width: 800px;
@@ -495,7 +497,7 @@ p {
   border-radius: 15px;
   padding: 1rem 1.5rem;
   text-decoration: none;
-  color: white;
+  color: #333;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -539,7 +541,7 @@ p {
 .instagram-link a {
   display: inline-block;
   background: rgba(255, 255, 255, 0.15);
-  color: white;
+  color: #333;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -560,7 +562,7 @@ p {
   backdrop-filter: blur(20px);
   padding: 2rem;
   margin: 2rem auto;
-  color: white;
+  color: #333;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   max-width: 800px;
 }
@@ -572,7 +574,7 @@ p {
   backdrop-filter: blur(20px);
   padding: 2rem;
   margin: 2rem auto;
-  color: white;
+  color: #333;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   max-width: 800px;
 }
@@ -584,7 +586,7 @@ p {
   backdrop-filter: blur(20px);
   padding: 2rem;
   margin: 2rem auto;
-  color: white;
+  color: #333;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   max-width: 800px;
 }
@@ -652,12 +654,12 @@ p {
 
 .position-details strong {
   font-size: 0.95rem;
-  color: white;
+  color: #333;
 }
 
 .position-details span {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: #333;
   line-height: 1.3;
 }
 
@@ -712,14 +714,14 @@ p {
   display: block;
   font-size: 0.95rem;
   margin-bottom: 0.3rem;
-  color: white;
+  color: #333;
 }
 
 .activity-details p {
   font-size: 0.85rem;
   line-height: 1.4;
   margin: 0;
-  color: rgba(255, 255, 255, 0.9);
+  color: #333;
 }
 
 .philosophy-highlight {
@@ -742,7 +744,7 @@ p {
   margin: 0 0 1rem 0;
   font-size: 1.3rem;
   text-align: center;
-  color: white;
+  color: #333;
 }
 
 .award-items {
@@ -772,12 +774,12 @@ p {
 
 .award-details strong {
   font-size: 0.95rem;
-  color: white;
+  color: #333;
 }
 
 .award-details span {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: #333;
 }
 
 .leadership-philosophy {
@@ -790,7 +792,7 @@ p {
   font-size: 0.95rem;
   line-height: 1.6;
   margin: 0;
-  color: rgba(255, 255, 255, 0.95);
+  color: #333;
 }
 
 /* Mobile responsive for sections */
@@ -831,7 +833,7 @@ p {
   backdrop-filter: blur(20px);
   padding: 2rem;
   margin: 2rem auto;
-  color: white;
+  color: #333;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   max-width: 800px;
 }
@@ -869,7 +871,7 @@ p {
 
 .journey-details strong {
   font-size: 1rem;
-  color: white;
+  color: #333;
   margin-bottom: 0.2rem;
 }
 
@@ -877,14 +879,14 @@ p {
   font-size: 0.85rem;
   line-height: 1.4;
   margin: 0 0 0.5rem 0;
-  color: rgba(255, 255, 255, 0.9);
+  color: #333;
 }
 
 .achievement {
   font-size: 0.8rem;
-  color: #ffd700;
+  color: #333;
   font-weight: 600;
-  background: rgba(255, 215, 0, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   padding: 0.2rem 0.6rem;
   border-radius: 10px;
   align-self: flex-start;
@@ -914,14 +916,14 @@ p {
   display: block;
   font-size: 0.95rem;
   margin-bottom: 0.3rem;
-  color: white;
+  color: #333;
 }
 
 .insight-details p {
   font-size: 0.85rem;
   line-height: 1.4;
   margin: 0;
-  color: rgba(255, 255, 255, 0.9);
+  color: #333;
 }
 
 .pageant-philosophy {
@@ -958,7 +960,7 @@ p {
   margin: 0 0 1rem 0;
   font-size: 1.2rem;
   text-align: center;
-  color: white;
+  color: #333;
 }
 
 .inspiration-content p {
@@ -1026,9 +1028,9 @@ p {
   backdrop-filter: blur(20px);
   padding: 2rem;
   margin: 2rem auto 1rem auto;
-  color: white;
+  color: #333;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .contact-content {
@@ -1047,7 +1049,7 @@ p {
   font-size: 1.1rem;
   line-height: 1.6;
   margin: 0;
-  color: rgba(255, 255, 255, 0.95);
+  color: #333;
 }
 
 .qr-container {
@@ -1061,7 +1063,7 @@ p {
   width: 150px;
   height: 150px;
   border-radius: 15px;
-  background: white;
+  background: #333;
   padding: 10px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
@@ -1074,7 +1076,7 @@ p {
 
 .qr-instruction {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: #333;
   font-weight: 600;
   margin: 0;
 }
@@ -1113,4 +1115,298 @@ p {
   }
 }
 
+/* Risk Game Section Styles */
+.risk-game-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  margin: 2rem auto;
+  color: #333;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  max-width: 800px;
+}
 
+.game-container {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.reports-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.report-card {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.report-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.report-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.report-card.active {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: #3b82f6;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.report-card.active::before {
+  background: #3b82f6;
+}
+
+.report-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.report-icon {
+  font-size: 1.5rem;
+  margin-right: 0.8rem;
+  flex-shrink: 0;
+}
+
+.report-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.report-description {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+}
+
+.report-impact {
+  color: #555;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.report-impact strong {
+  color: #333;
+}
+
+.suggested-priority {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.justification-feedback {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border-left: 4px solid #3b82f6;
+  display: none;
+}
+
+.justification-feedback.show {
+  display: block;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.justification-feedback h4 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.justification-feedback p {
+  margin: 0;
+  color: #444;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.priority-buttons {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+}
+
+.priority-buttons h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.8rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.priority-button {
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.priority-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.priority-button:active {
+  transform: translateY(0);
+}
+
+.btn-critical {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.btn-critical:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+.btn-high {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+.btn-high:hover {
+  background: linear-gradient(135deg, #ea580c, #c2410c);
+}
+
+.btn-medium {
+  background: linear-gradient(135deg, #eab308, #d97706);
+}
+
+.btn-medium:hover {
+  background: linear-gradient(135deg, #d97706, #b45309);
+}
+
+.btn-low {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.btn-low:hover {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.feedback-section {
+  background: rgba(59, 130, 246, 0.1);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.feedback-section h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.feedback-section p {
+  margin: 0;
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.game-controls {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.reset-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #333;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .risk-game-section {
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+  }
+  
+  .game-container {
+    padding: 1rem;
+  }
+  
+  .report-card {
+    padding: 1rem;
+  }
+  
+  .button-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  
+  .priority-button {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
