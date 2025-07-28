@@ -93,6 +93,48 @@ function initializeBackToTop() {
   });
 }
 
+function initializeScrollDownNote() {
+  const scrollDownNote = document.getElementById('scrollDownNote');
+  const timelineContainer = document.querySelector('.timeline-container');
+  const riskGameSection = document.querySelector('.risk-game-section');
+  
+  if (!scrollDownNote || !timelineContainer || !riskGameSection) return;
+
+  // Show/hide scroll down note based on scroll position
+  function toggleScrollDownNote() {
+    const timelineBottom = timelineContainer.offsetTop + timelineContainer.offsetHeight;
+    const riskGameTop = riskGameSection.offsetTop;
+    const scrollPosition = window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    
+    // Show note when user has scrolled past timeline but before risk game
+    const showNote = scrollPosition + windowHeight > timelineBottom && 
+                     scrollPosition + windowHeight < riskGameTop + 200;
+    
+    if (showNote) {
+      scrollDownNote.classList.add('visible');
+    } else {
+      scrollDownNote.classList.remove('visible');
+    }
+  }
+
+  // Smooth scroll to risk game when note is clicked
+  scrollDownNote.addEventListener('click', function() {
+    riskGameSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+    
+    // Hide the note after clicking
+    setTimeout(() => {
+      scrollDownNote.classList.remove('visible');
+    }, 500);
+  });
+
+  // Listen for scroll events
+  window.addEventListener('scroll', toggleScrollDownNote);
+}
+
 window.onload = () => {
   
   // Initialize audio controls
@@ -115,6 +157,8 @@ window.onload = () => {
 
   //Initizilize back to top button
   initializeBackToTop();
+
+  initializeScrollDownNote();
 
   // Initialize particles
   particlesJS("particles-js", {
@@ -164,6 +208,7 @@ window.onload = () => {
     },
     retina_detect: true
   });
+
 };
 
 // Risk Prioritization Game JavaScript
