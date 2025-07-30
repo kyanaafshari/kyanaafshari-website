@@ -376,3 +376,271 @@ window.onload = () => {
     initializeRiskGame();
   }
 })();
+
+// Array of vulnerability scenarios
+const vulnerabilityScenarios = [
+    {
+        id: 'scenario1',
+        title: 'Hardcoded API Key in Configuration',
+        type: 'config',
+        snippet: `
+# Application Configuration
+DEBUG_MODE = True
+DATABASE_URL = "mysql://user:password@localhost/app_db"
+API_KEY = "sk_live_XXXXXXXXXXXXXXXXXXXXXXX"
+LOG_LEVEL = "INFO"
+        `.trim(),
+        vulnerableLines: [3], // Line number (0-indexed)
+        explanation: `
+            <strong>Vulnerability: Hardcoded API Key.</strong>
+            Storing sensitive API keys directly in source code or configuration files is a major security risk. If this file is ever exposed (e.g., through a misconfigured web server, version control leak, or compromised system), the API key can be stolen and misused.
+            <strong>Remediation:</strong> Use environment variables, a secrets management service (e.g., AWS Secrets Manager, HashiCorp Vault), or a secure configuration management system to store and retrieve sensitive credentials.
+        `
+    },
+    {
+        id: 'scenario2',
+        title: 'SQL Injection Vulnerability in User Search',
+        type: 'code',
+        snippet: `
+function getUser(username) {
+  const query = "SELECT * FROM users WHERE username = '" + username + "';";
+  // In a real app, this would execute the query against a database
+  console.log("Executing query: " + query);
+  return { id: 1, username: username, email: "test@example.com" }; // Mock result
+}
+
+// Example usage (vulnerable if username comes from user input)
+let userInput = "admin' OR '1'='1";
+getUser(userInput);
+        `.trim(),
+        vulnerableLines: [1], // Line number (0-indexed)
+        explanation: `
+            <strong>Vulnerability: SQL Injection.</strong>
+            Line 2 directly concatenates user-supplied input ('username') into an SQL query string without proper sanitization or parameterization. An attacker can inject malicious SQL code (e.g., "admin' OR '1'='1") to bypass authentication, access unauthorized data, or even execute arbitrary commands on the database.
+            <strong>Remediation:</strong> Always use prepared statements with parameterized queries. Most database libraries provide methods for this (e.g., \`db.execute("SELECT * FROM users WHERE username = ?", [username])\`). Never concatenate user input directly into SQL queries.
+        `
+    },
+    {
+        id: 'scenario3',
+        title: 'Overly Permissive Firewall Rule',
+        type: 'config',
+        snippet: `
+# Firewall Rules
+rule 1: allow tcp from any to any port 80
+rule 2: allow tcp from 192.168.1.0/24 to any port 22
+rule 3: allow tcp from any to any port 443
+rule 4: allow tcp from any to any port 3389
+rule 5: deny ip from any to any
+        `.trim(),
+        vulnerableLines: [3], // Line number (0-indexed) - rule 4: RDP open to any
+        explanation: `
+            <strong>Vulnerability: Overly Permissive Firewall Rule (RDP).</strong>
+            Rule 4 allows TCP traffic from 'any' source to 'any' destination on port 3389 (Remote Desktop Protocol). Exposing RDP to the internet (or any broad network segment) without strict source IP restrictions or VPN requirements is a significant security risk, as RDP is a common target for brute-force attacks and exploits.
+            <strong>Remediation:</strong> Restrict RDP access to specific trusted IP addresses or IP ranges. Ideally, place RDP behind a VPN or use a jump box. If external access is required, ensure strong authentication (MFA) is enforced and monitor logs for suspicious activity.
+        `
+    },
+    {
+        id: 'scenario4',
+        title: 'Insecure Direct Object Reference (IDOR)',
+        type: 'code',
+        snippet: `
+// Express.js Route Handler
+app.get('/api/v1/users/:id', (req, res) => {
+  const userId = req.params.id; // User ID taken directly from URL
+  // In a real app, this would fetch user data from DB
+  const userData = fetchUserFromDatabase(userId); // No authorization check
+  if (userData) {
+    res.json(userData);
+  } else {
+    res.status(404).send('User not found');
+  }
+});
+        `.trim(),
+        vulnerableLines: [4], // Line number (0-indexed) - fetchUserFromDatabase without auth check
+        explanation: `
+            <strong>Vulnerability: Insecure Direct Object Reference (IDOR).</strong>
+            Line 4 fetches user data using an ID directly from the URL parameter (\`req.params.id\`) without performing any authorization check to ensure the *current authenticated user* is permitted to access *that specific user's data*. An attacker could simply change the \`id\` in the URL to view other users' information.
+            <strong>Remediation:</strong> Implement robust authorization checks. Before fetching data, verify that the authenticated user has permission to access the requested resource. This often involves comparing the requested ID with the current user's ID or checking roles/permissions.
+        `
+    },
+    {
+        id: 'scenario5',
+        title: 'Weak Session Management / Predictable Session ID',
+        type: 'code',
+        snippet: `
+// User login function (simplified)
+function loginUser(username, password) {
+  if (authenticate(username, password)) {
+    const sessionId = generateSimpleSessionId(username); // Weak session ID generation
+    // Store sessionId in cookie and database
+    return { success: true, sessionId: sessionId };
+  }
+  return { success: false };
+}
+
+function generateSimpleSessionId(username) {
+  // This is a highly insecure way to generate a session ID!
+  return btoa(username + Date.now()); // Base64 encoding of username + timestamp
+}
+        `.trim(),
+        vulnerableLines: [3, 10], // Line 3 (call to weak function), Line 10 (weak generation)
+        explanation: `
+            <strong>Vulnerability: Weak Session Management / Predictable Session ID.</strong>
+            Line 10 (\`generateSimpleSessionId\`) creates a session ID by simply base64 encoding the username and a timestamp. This makes the session ID highly predictable. An attacker could guess or brute-force valid session IDs, especially if they know a username, leading to session hijacking. Line 3 uses this insecure function.
+            <strong>Remediation:</strong> Session IDs must be cryptographically strong, random, and sufficiently long. Use built-in session management functions provided by web frameworks (e.g., Express-session, Flask-Session) that generate secure, random session tokens. Ensure session IDs are stored securely (e.g., HttpOnly cookies) and invalidated upon logout or inactivity.
+        `
+    }
+];
+
+let currentScenarioIndex = 0;
+let selectedLines = new Set(); // Stores 0-indexed line numbers selected by the user
+
+const codeSnippetPre = document.getElementById('code-snippet');
+const checkButton = document.getElementById('check-button');
+const nextButton = document.getElementById('next-button');
+const resetButton = document.getElementById('reset-button');
+const feedbackArea = document.getElementById('feedback-area');
+const feedbackTitle = document.getElementById('feedback-title');
+const feedbackText = document.getElementById('feedback-text');
+
+/**
+ * Loads and displays the current vulnerability scenario.
+ */
+function loadScenario() {
+  selectedLines.clear(); // Clear previous selections
+  feedbackArea.classList.remove('show', 'feedback-correct', 'feedback-incorrect', 'feedback-neutral');
+  feedbackTitle.textContent = '';
+  feedbackText.textContent = '';
+  checkButton.disabled = false; // Enable check button
+  checkButton.classList.remove('hidden'); // Show check button
+  nextButton.classList.add('hidden'); // Hide next button until checked
+
+  const scenario = vulnerabilityScenarios[currentScenarioIndex];
+  codeSnippetPre.innerHTML = ''; // Clear previous snippet
+
+  // Split snippet into lines and create clickable elements
+  scenario.snippet.split('\n').forEach((line, index) => {
+      const lineSpan = document.createElement('span');
+      lineSpan.classList.add('code-line', 'block', 'font-mono');
+      lineSpan.textContent = `${String(index + 1).padStart(2, ' ')}. ${line}`; // Add line numbers
+      lineSpan.dataset.lineNumber = index; // Store 0-indexed line number
+      codeSnippetPre.appendChild(lineSpan);
+
+      // Add click listener to each report card
+      lineSpan.addEventListener('click', () => toggleLineSelection(lineSpan, index));
+  });
+}
+
+/**
+ * Toggles the selection state of a code line.
+ * @param {HTMLElement} lineElement - The HTML element of the clicked line.
+ * @param {number} lineNumber - The 0-indexed number of the line.
+ */
+function toggleLineSelection(lineElement, lineNumber) {
+  // Only allow selection if check button is enabled (i.e., not yet checked)
+  if (!checkButton.disabled) {
+    if (lineElement.classList.contains('selected')) {
+        lineElement.classList.remove('selected');
+        selectedLines.delete(lineNumber);
+    } else {
+        lineElement.classList.add('selected');
+        selectedLines.add(lineNumber);
+    }
+  }
+}
+
+/**
+ * Checks the user's selected lines against the correct vulnerable lines.
+ */
+function checkAnswer() {
+    checkButton.disabled = true; // Disable check button after submission
+    checkButton.classList.add('hidden'); // Hide check button
+    nextButton.classList.remove('hidden'); // Show next button
+
+    const scenario = vulnerabilityScenarios[currentScenarioIndex];
+    const correctLines = new Set(scenario.vulnerableLines);
+
+    let isCorrect = true;
+    // Check if all correct lines are selected and no extra lines are selected
+    if (selectedLines.size !== correctLines.size) {
+        isCorrect = false;
+    } else {
+        for (let line of correctLines) {
+            if (!selectedLines.has(line)) {
+                isCorrect = false;
+                break;
+            }
+        }
+    }
+
+    // Highlight lines and provide feedback
+    document.querySelectorAll('.code-line').forEach((lineElement, index) => {
+        // Remove existing feedback classes
+        lineElement.classList.remove('selected', 'correct', 'incorrect');
+
+        if (correctLines.has(index)) {
+            lineElement.classList.add('correct'); // Mark correct answer
+        }
+        if (selectedLines.has(index) && !correctLines.has(index)) {
+            lineElement.classList.add('incorrect'); // Mark user's incorrect selection
+        }
+        // If a line was correctly identified by the user, but it's not the only correct line,
+        // or if the user missed some correct lines, the overall answer is still incorrect.
+        if (!selectedLines.has(index) && correctLines.has(index)) {
+            // If a correct line was NOT selected by the user, mark it as missed correct
+            lineElement.classList.add('correct'); // Still show it as correct for explanation
+        }
+
+        lineElement.style.cursor = 'default'; // Disable further clicks
+        // Remove all event listeners to prevent re-selection
+        const newLineElement = lineElement.cloneNode(true); // Clone to remove all listeners
+        lineElement.parentNode.replaceChild(newLineElement, lineElement);
+    });
+
+    feedbackArea.classList.add('show');
+    if (isCorrect) {
+        feedbackArea.classList.add('feedback-correct');
+        feedbackTitle.textContent = 'Correct! Well done!';
+    } else {
+        feedbackArea.classList.add('feedback-incorrect');
+        feedbackTitle.textContent = 'Not quite. Here\'s the explanation:';
+    }
+    feedbackText.innerHTML = scenario.explanation;
+}
+
+/**
+ * Resets the current challenge to its initial state.
+ */
+function resetChallenge() {
+    loadScenario(); // Reloads the current scenario
+}
+
+/**
+ * Moves to the next challenge scenario.
+ * If at the end, loops back to the beginning and shows completion message.
+ */
+function nextChallenge() {
+    currentScenarioIndex++;
+    if (currentScenarioIndex < vulnerabilityScenarios.length) {
+      loadScenario();
+    } else {
+      // All challenges completed
+      currentScenarioIndex = 0; // Loop back to the first scenario
+      loadScenario(); // Load the first scenario for a fresh start
+      feedbackArea.classList.remove('feedback-correct', 'feedback-incorrect');
+      feedbackArea.classList.add('show', 'feedback-neutral');
+      feedbackTitle.textContent = 'Challenge Complete!';
+      feedbackText.innerHTML = 'You\'ve gone through all the vulnerability scenarios. Click "Reset Challenge" to play again, or try them one more time!';
+      nextButton.classList.add('hidden'); // Hide next button
+      checkButton.classList.add('hidden'); // Hide check button
+    }
+}
+
+// Add event listeners
+checkButton.addEventListener('click', checkAnswer);
+resetButton.addEventListener('click', resetChallenge);
+nextButton.addEventListener('click', nextChallenge);
+
+
+// Initial load of the first scenario when the page loads
+document.addEventListener('DOMContentLoaded', loadScenario);

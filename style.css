@@ -1521,10 +1521,76 @@ p {
   100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
 }
 
+.container {
+    max-width: 960px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 2.5rem;
+    box-sizing: border-box;
+}
+.code-line {
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.125rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    white-space: pre-wrap; /* Preserve whitespace and wrap */
+    word-break: break-all; /* Break long words */
+}
+.code-line:hover {
+    background-color: #e2e8f0; /* Light gray on hover */
+}
+.code-line.selected {
+    background-color: #bfdbfe; /* Light blue when selected */
+    border: 1px solid #60a5fa;
+}
+.code-line.correct {
+    background-color: #d1fae5; /* Light green for correct */
+    border: 1px solid #34d399;
+}
+.code-line.incorrect {
+    background-color: #fee2e2; /* Light red for incorrect */
+    border: 1px solid #ef4444;
+}
+.feedback-message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    display: none; /* Hidden by default */
+}
+.feedback-message.show {
+    display: block;
+}
+.feedback-correct {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #34d399;
+}
+.feedback-incorrect {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #ef4444;
+}
+.feedback-neutral {
+    background-color: #e0f2fe;
+    color: #1e40af;
+    border: 1px solid #60a5fa;
+}
+
 /* Hide on mobile to avoid clutter */
 @media (max-width: 768px) {
   .scroll-down-note {
     display: none;
+  }
+  #action-area {
+      flex-direction: column;
+      gap: 1rem;
+  }
+  #action-area button {
+      width: 100%;
+      margin-right: 0 !important; /* Override mr-4 */
   }
 }
 
